@@ -13,9 +13,13 @@
         <h1>Sorting Visualizer</h1>
         <div class="canvas" id="canvas">
         </div>
-        <button onclick="reload()">
-            generate new array
-        </button>
+        <div class="sz-tm">
+            <input type="number" name="size" id="size" placeholder="Array Size">
+            <button onclick="reload()">
+                generate new array
+            </button>
+
+        </div>
         <div class="btn-grp">
             <button onclick="innerBblSort()">Bubble sort</button>
             <button onclick="selectionSort()">Selection sort</button>
@@ -25,12 +29,23 @@
     </div>
     <script>
         let arr = []
+        generateArrEl(100);
         function reload() {
-            location.reload();
+            let val = document.getElementById("size").value;
+            document.getElementById("size").value= "";
+            val = parseInt(val);
+            if (!isNaN(val) && val < 200 && val > 5) {
+                console.log(val)
+                generateArrEl(Math.floor(val));
+            }else generateArrEl(100)
+
         }
-        for (let i = 0; i < 100; i++) {
-            arr.push(Math.floor(Math.random() * 1000));
-            generateHtml(arr);
+        function generateArrEl(arrSize) {
+            arr=[];
+            for (let i = 0; i < arrSize; i++) {
+                arr.push(Math.floor(Math.random() * 1000));
+                generateHtml();
+            }
         }
         async function innerBblSort() {
             for (let i = 0; i < arr.length; i++) {
@@ -53,7 +68,7 @@
         //sleep
         function sleep() {
             generateHtml();
-            return new Promise(resolve => setTimeout(resolve, 1));
+            return new Promise(resolve => setTimeout(resolve, 0.5));
         }
         //selection sort
 
@@ -96,7 +111,7 @@
                 L[i] = arr[l + i];
             for (var j = 0; j < n2; j++)
                 R[j] = arr[m + 1 + j];
-            
+
             // Merge the temp arrays back into arr[l..r]
 
             // Initial index of first subarray
@@ -135,15 +150,15 @@
                 arr[k] = R[j];
                 j++;
                 k++;
-                await sleep(); 
+                await sleep();
             }
         }
 
         // l is for left index and r is
         // right index of the sub-array
         // of arr to be sorted
-        async function mergeSortC(){
-            await mergeSort(arr,0,arr.length-1);
+        async function mergeSortC() {
+            await mergeSort(arr, 0, arr.length - 1);
         }
         async function mergeSort(arr, l, r) {
             if (l >= r) {
