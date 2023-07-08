@@ -14,7 +14,7 @@
         <div class="canvas" id="canvas">
         </div>
         <div class="sz-tm">
-            <input type="number" name="size" id="size" placeholder="Array Size">
+            <input type="number" name="size" id="size" placeholder="Array Size less than 150">
             <button onclick="reload()">
                 generate new array
             </button>
@@ -34,7 +34,7 @@
             let val = document.getElementById("size").value;
             document.getElementById("size").value= "";
             val = parseInt(val);
-            if (!isNaN(val) && val < 200 && val > 5) {
+            if (!isNaN(val) && val < 160 && val > 5) {
                 console.log(val)
                 generateArrEl(Math.floor(val));
             }else generateArrEl(100)
