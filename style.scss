@@ -1,0 +1,43 @@
+@mixin center_flex($par){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $par;
+    color:red;
+}
+@mixin m-p($m,$p){
+    margin: $m;
+    padding: $p;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    @include center_flex(column);
+    @include m-p(0,0);
+    width: 100vw;
+    min-height: 100vh;
+    .body{
+        @include center_flex(column);
+        .canvas{
+            @include center_flex(row);
+            justify-content: end;
+            .bar{
+                @include m-p(1px,1px );
+                width:0.3vw;
+                background-color: aqua;
+                border: solid black 0.1px;
+            }
+        }
+        button{
+            cursor: pointer;
+            @include m-p(5px,5px );
+        }
+        .btn-grp{
+            @include center_flex(row);
+        }
+
+    }    
+}
