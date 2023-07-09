@@ -55,8 +55,8 @@
                         //Swapping
                         [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
                     }
-                    await sleep();
                 }
+                await sleep();
             }
         }
         function generateHtml() {
@@ -68,7 +68,7 @@
         //sleep
         function sleep() {
             generateHtml();
-            return new Promise(resolve => setTimeout(resolve, 0.5));
+            return new Promise(resolve => setTimeout(resolve, 1));
         }
         //selection sort
 
