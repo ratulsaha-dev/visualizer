@@ -80,8 +80,9 @@
                         //[arr[i],arr[j]]= [arr[j],arr[i]];
                         pos = j;
                     }
-                    await sleep();
+                    
                 }
+                await sleep();
                 [arr[pos], arr[i]] = [arr[i], arr[pos]];
             }
         }
@@ -92,8 +93,9 @@
                 while (j >= 0 && item <= arr[j]) {
                     arr[j + 1] = arr[j];
                     j--;
-                    await sleep();
+                    
                 }
+                await sleep();
                 arr[j + 1] = item;
             }
         }
